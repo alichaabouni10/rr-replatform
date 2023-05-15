@@ -82,7 +82,7 @@ export function Hero({
             </Text>
           )}
           <Button as="span">
-            {cta.value}
+            See More
           </Button>
         </div>
       </section>

@@ -1,9 +1,9 @@
 // Virtual entry point for the app
 import * as remixBuild from '@remix-run/dev/server-build';
 import {
-  createRequestHandler,
   getStorefrontHeaders,
 } from '@shopify/remix-oxygen';
+import { createRequestHandler } from "@remix-run/netlify";
 import {createStorefrontClient, storefrontRedirect} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
 import {getLocaleFromRequest} from '~/lib/utils';

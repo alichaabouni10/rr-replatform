@@ -56,7 +56,7 @@ export async function loader({request, context}: LoaderArgs) {
   const cartId = getCartId(request);
   const [customerAccessToken, layout] = await Promise.all([
     context.session.get('customerAccessToken'),
-    getLayoutData(context, storeMake),
+    getLayoutData(context),
   ]);
 
   
@@ -166,13 +166,13 @@ export function ErrorBoundary({error}: {error: Error}) {
 
 const LAYOUT_QUERY = `#graphql
   fragment SEOINFO on Shop {
-    shop_name: metafield(namespace: "${DEFAULT_MAKE_STORE}", key: "shop_name") {
+    shop_name: metafield(namespace: "bmw", key: "shop_name") {
       value
     }
-    meta_title: metafield(namespace: "${DEFAULT_MAKE_STORE}", key: "meta_title") {
+    meta_title: metafield(namespace: "bmw", key: "meta_title") {
       value
     }
-    meta_description: metafield(namespace: "${DEFAULT_MAKE_STORE}", key: "meta_description") {
+    meta_description: metafield(namespace: "bmw", key: "meta_description") {
       value
     }
   }
@@ -233,17 +233,15 @@ export interface LayoutData {
   cart?: Promise<Cart>;
 }
 
-async function getLayoutData({storefront}: AppLoadContext, storeMake) {
-  const HEADER_MENU_HANDLE = `${storeMake}-main-menu`;
-  const FOOTER_MENU_HANDLE = `${storeMake}-footer-menu`;
-  const STORE_MAKE = `${storeMake}`;
+async function getLayoutData({storefront}: AppLoadContext) {
+  const HEADER_MENU_HANDLE = `bmw-main-menu`;
+  const FOOTER_MENU_HANDLE = `bmw-footer-menu`;
 
   const data = await storefront.query<LayoutData>(LAYOUT_QUERY, {
     variables: {
       headerMenuHandle: HEADER_MENU_HANDLE,
       footerMenuHandle: FOOTER_MENU_HANDLE,
-      language: storefront.i18n.language,
-      storeMake: STORE_MAKE,
+      language: storefront.i18n.language
     },
   });
 

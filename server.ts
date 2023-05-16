@@ -76,7 +76,7 @@ export default {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
-      return new Response('An unexpected error occurred', {status: 500});
+      return new Response('An error occurred', {status: 500});
     }
   },
 };

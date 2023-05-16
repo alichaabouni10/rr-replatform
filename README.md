@@ -2,9 +2,10 @@
 
 Directions:
 
-1) Add .env file
+1) Add .env file and variables provided
+```bash
 touch .env
-(add variables)
+```
 
 2)
 ```bash

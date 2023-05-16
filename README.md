@@ -1,4 +1,4 @@
-# Hydrogen template: Demo Store
+# RR template: Demo Store
 
 Directions:
 
